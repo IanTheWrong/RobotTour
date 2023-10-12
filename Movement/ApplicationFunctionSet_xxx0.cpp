@@ -14,7 +14,7 @@ enum SmartRobotCarMotionControl
   RightForward,  //(7)
   RightBackward, //(8)
   stop_it        //(9)
-};               //direction:（1）、（2）、 （3）、（4）、（5）、（6）
+};               //direction方向:（1）、（2）、 （3）、（4）、（5）、（6）
 
 struct Application_xxx
 {
@@ -23,7 +23,7 @@ struct Application_xxx
 
 extern Application_xxx Application_SmartRobotCarxxx0;
 
-static void ApplicationFunctionSet_SmartRobotCarMotionControl(SmartRobotCarMotionControl direction, uint8_t is_speed)
+static void move(SmartRobotCarMotionControl direction, uint8_t is_speed)
 {
   static uint8_t directionRecord = 0;
   uint8_t Kp, UpperLimit;
