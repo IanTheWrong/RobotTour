@@ -6,18 +6,22 @@ DeviceDriverSet_Motor AppMotor;
 Application_xxx Application_SmartRobotCarxxx0;
 
 void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
   AppMotor.DeviceDriverSet_Motor_Init();
   delay(2000);
-  for (Application_SmartRobotCarxxx0.Motion_Control = 0; Application_SmartRobotCarxxx0.Motion_Control < 9; Application_SmartRobotCarxxx0.Motion_Control = Application_SmartRobotCarxxx0.Motion_Control + 1)
-  {
-    ApplicationFunctionSet_SmartRobotCarMotionControl(Application_SmartRobotCarxxx0.Motion_Control /*direction*/, 200 /*speed*/);
-    delay(1000);
-  }
+  // Moves Backward
+  ApplicationFunctionSet_SmartRobotCarMotionControl(Backward /*direction*/, 50 /*speed*/);
+  delay(5000);
+  // The Delay below it is how long it moves in that direction
+  //If no delay then will go on forever
+  ApplicationFunctionSet_SmartRobotCarMotionControl(Forward /*direction*/, 50 /*speed*/);
 }
 
 void loop() {
-
-
+  digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(1000);                      // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+  delay(1000);    
 
 
 }
