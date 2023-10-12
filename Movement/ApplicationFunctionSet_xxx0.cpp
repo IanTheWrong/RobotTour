@@ -1,7 +1,6 @@
 #include "DeviceDriverSet_xxx0.h"
 
 extern DeviceDriverSet_Motor AppMotor;
-
 /*运动方向控制序列*/
 enum SmartRobotCarMotionControl
 {

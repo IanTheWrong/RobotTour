@@ -1,16 +1,19 @@
 #include <avr/wdt.h>
 #include "DeviceDriverSet_xxx0.h"
 #include "ApplicationFunctionSet_xxx0.cpp"
+#include "MPU6050.h"
+#include "MPU6050_getdata.h"
 
 DeviceDriverSet_Motor AppMotor;
 Application_xxx Application_SmartRobotCarxxx0;
-
+double t=(90+6)/136.29*1000.;
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   AppMotor.DeviceDriverSet_Motor_Init();
-  // Moves Backward
-  move(Backward /*direction*/, 50 /*speed*/);
   delay(2000);
+  // Moves Backward
+  move(Left /*direction*/, 255 /*speed*/);
+  delay(t);
   // The Delay below it is how long it moves in that direction
   //If no delay then will go on forever
   move(Forward /*direction*/, 50 /*speed*/);
