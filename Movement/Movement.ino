@@ -1,26 +1,41 @@
 #include <avr/wdt.h>
 #include "DeviceDriverSet_xxx0.h"
 #include "ApplicationFunctionSet_xxx0.cpp"
-#include "MPU6050.h"
-#include "MPU6050_getdata.h"
 
 DeviceDriverSet_Motor AppMotor;
-Application_xxx Application_SmartRobotCarxxx0;
-double t=(90+6)/136.29*1000.;
+Application_xxx Application_ConquerorCarxxx0;
+MPU6050_getdata AppMPU6050getdata;
+int time1 = 0;
+int time2 = 0;
+ConquerorCarMotionControl status = Forward;
+
 void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
+  Serial.begin(9600);
   AppMotor.DeviceDriverSet_Motor_Init();
+  AppMPU6050getdata.MPU6050_dveInit();
   delay(2000);
-  // Moves Backward
-  move(Left /*direction*/, 255 /*speed*/);
-  delay(t);
-  // The Delay below it is how long it moves in that direction
-  //If no delay then will go on forever
-  move(Forward /*direction*/, 50 /*speed*/);
-  delay(1000);
-  move(stop_it /*direction*/, 20 /*speed*/);
+  AppMPU6050getdata.MPU6050_calibration();
+
+
 }
 
+void loop() {
+
+  ApplicationFunctionSet_ConquerorCarMotionControl(status /*direction*/, 250 /*speed*/);
+  time2 = millis();
+  if (3000 < abs(time2 - time1))
+  {
+    if (status == Forward)
+    {
+      status = Backward;
+    }
+    else
+    {
+      status = Forward;
+    }
+    time1 = time2;
+  }
+}
 void loop() {
   digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
   delay(1000);                      // wait for a second
