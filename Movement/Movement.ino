@@ -20,27 +20,17 @@ void setup() {
 }
 
 void loop() {
-
-  ApplicationFunctionSet_ConquerorCarMotionControl(status /*direction*/, 250 /*speed*/);
-  time2 = millis();
-  if (3000 < abs(time2 - time1))
-  {
-    if (status == Forward)
-    {
-      status = Backward;
-    }
-    else
-    {
-      status = Forward;
-    }
-    time1 = time2;
+  static float Yaw;
+  AppMPU6050getdata.MPU6050_dveGetEulerAngles(&Yaw);
+  Serial.println(Yaw);
+  if(Yaw > -90){
+    ApplicationFunctionSet_ConquerorCarMotionControl(Left /*direction*/, 60 /*speed*/);
   }
-}
-void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
-  delay(1000);                      // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
-  delay(1000);    
-
+  else if(Yaw < -92){
+    ApplicationFunctionSet_ConquerorCarMotionControl(Right /*direction*/, 60 /*speed*/);
+  }
+  else{
+    ApplicationFunctionSet_ConquerorCarMotionControl(stop_it /*direction*/, 255 /*speed*/);
+  }
 
 }
