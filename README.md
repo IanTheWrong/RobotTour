@@ -1,3 +1,5 @@
 # RobotTour
 
-Using TB6612 & MPU6050 Files. DRV8835 and TB6612 & QMI8658C files should not be used. will be taken out soon.
+Using TB6612 & MPU6050 Files. DRV8835 and TB6612 & QMI8658C files should not be used. 
+
+# DO NOT FORK OR USE IN ANY WAY IF OUTSIDE OF CONTRIBUTORS. DO NOT COPY PASTE AND CHANGE AT ALL
