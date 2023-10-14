@@ -19,6 +19,19 @@ static void turnLeft(float Yaw, int Speed){
     ApplicationFunctionSet_ConquerorCarMotionControl(stop_it /*direction*/, Speed /*speed*/);
   }
 }
+static void turnRight(float Yaw, int Speed){
+  if(Yaw < 90){
+    ApplicationFunctionSet_ConquerorCarMotionControl(Left /*direction*/, Speed /*speed*/);
+  }
+  else if(Yaw > 92{
+    ApplicationFunctionSet_ConquerorCarMotionControl(Right /*direction*/, Speed /*speed*/);
+  }
+  else{
+    ApplicationFunctionSet_ConquerorCarMotionControl(stop_it /*direction*/, Speed /*speed*/);
+  }
+}
+
+
 void setup() {
   Serial.begin(9600);
   AppMotor.DeviceDriverSet_Motor_Init();
