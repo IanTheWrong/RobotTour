@@ -8,28 +8,6 @@ MPU6050_getdata AppMPU6050getdata;
 int time1 = 0;
 int time2 = 0;
 ConquerorCarMotionControl status = Forward;
-static void turnLeft(float Yaw, int Speed){
-  if(Yaw > -90){
-    ApplicationFunctionSet_ConquerorCarMotionControl(Left /*direction*/, Speed /*speed*/);
-  }
-  else if(Yaw < -92){
-    ApplicationFunctionSet_ConquerorCarMotionControl(Right /*direction*/, Speed /*speed*/);
-  }
-  else{
-    ApplicationFunctionSet_ConquerorCarMotionControl(stop_it /*direction*/, Speed /*speed*/);
-  }
-}
-static void turnRight(float Yaw, int Speed){
-  if(Yaw < 90){
-    ApplicationFunctionSet_ConquerorCarMotionControl(Left /*direction*/, Speed /*speed*/);
-  }
-  else if(Yaw > 92{
-    ApplicationFunctionSet_ConquerorCarMotionControl(Right /*direction*/, Speed /*speed*/);
-  }
-  else{
-    ApplicationFunctionSet_ConquerorCarMotionControl(stop_it /*direction*/, Speed /*speed*/);
-  }
-}
 
 
 void setup() {
@@ -45,7 +23,7 @@ void setup() {
 void loop() {
   static float YawC;
   AppMPU6050getdata.MPU6050_dveGetEulerAngles(&YawC);
+  lround(YawC);
   Serial.println(YawC);
-  turnLeft(YawC, 60);
 
 }
