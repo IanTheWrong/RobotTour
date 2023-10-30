@@ -13,7 +13,7 @@ void setup() {
 
 void loop() {
     static float Yaw;
-    AppMPU6050getdata.MPU6050_dveGetEulerAngles(&Yaw);
-    Serial.print("Yaw:");
-    Serial.println(Yaw);
+    //AppMPU6050getdata.MPU6050_dveGetEulerAngles(&Yaw);
+    //Serial.print("Yaw:");
+    //Serial.println(Yaw);
 }

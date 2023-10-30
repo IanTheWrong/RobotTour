@@ -20,19 +20,6 @@ void setup() {
 }
 
 void loop() {
-
-  ApplicationFunctionSet_ConquerorCarMotionControl(status /*direction*/, 250 /*speed*/);
-  time2 = millis();
-  if (3000 < abs(time2 - time1))
-  {
-    if (status == Forward)
-    {
-      status = Backward;
-    }
-    else
-    {
-      status = Forward;
-    }
-    time1 = time2;
-  }
+  unsigned long Yaw
+  yaw = MPU6050_dveGetEulerAngles(Yaw)
 }

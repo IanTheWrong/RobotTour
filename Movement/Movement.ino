@@ -5,8 +5,8 @@
 DeviceDriverSet_Motor AppMotor;
 Application_xxx Application_ConquerorCarxxx0;
 MPU6050_getdata AppMPU6050getdata;
-int time1 = 0;
-int time2 = 0;
+double time1 = 0;
+double targetTime = time1*1000;
 ConquerorCarMotionControl status = Forward;
 
 
@@ -22,8 +22,7 @@ void setup() {
 
 void loop() {
   static float YawC;
-  AppMPU6050getdata.MPU6050_dveGetEulerAngles(&YawC);
-  lround(YawC);
-  Serial.println(YawC);
-
+  unsigned long mil;
+  digitalWrite(7, HIGH);
+  analogWrite(5, 255);
 }

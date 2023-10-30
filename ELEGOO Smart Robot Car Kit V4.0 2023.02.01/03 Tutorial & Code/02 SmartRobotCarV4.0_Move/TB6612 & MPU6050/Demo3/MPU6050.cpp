@@ -84,7 +84,7 @@ uint8_t MPU6050::getFullScaleAccelRange() {
                    buffer);
   return buffer[0];
 }
-void MPU6050::setFullScaleAccelRange(uint8_t range) {
+void MPU6050::setFullScaleAccelRange(uint8_t range) { 
   I2Cdev::writeBits(devAddr, MPU6050_RA_ACCEL_CONFIG,
                     MPU6050_ACONFIG_AFS_SEL_BIT, MPU6050_ACONFIG_AFS_SEL_LENGTH,
                     range);
